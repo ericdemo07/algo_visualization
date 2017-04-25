@@ -25,8 +25,10 @@ changeText(element, texts, time);
 
 var div = document.getElementById('displayUnsortedArray');
 div.style.visibility = 'hidden';
+var displayUnsortedArray = document.getElementById('displayUnsortedArray');
 
 function push() {
+  document.getElementById("displayUnsortedArray").innerHTML = "";
   var inputArrayAsString = document.getElementById("userInputArrayTextarea").value;
   console.log("Un-sorted Array : " + inputArrayAsString);
   var arrayToSort = inputArrayAsString.split(",");
@@ -45,7 +47,9 @@ function createArrayTable(arrayToSort) {
     var firstNameCell = row.insertCell(-1);
     firstNameCell.appendChild(document.createTextNode(arrayToSort[i]));
   }
-  document.body.appendChild(table);
+  table.setAttribute("border", "1");
+  displayUnsortedArray.appendChild(document.createTextNode("Unsorted Array :"));
+  displayUnsortedArray.appendChild(table);
 }
 
 
@@ -54,7 +58,7 @@ function selectionSortImplementation(arr) {
   for (i = 0; i < arr.length; i++) {
     loc = i;
     for (j = i; j < arr.length; j++) {
-      if (arr[j] < arr[loc]) {
+      if (+arr[j] < +arr[loc]) {
         loc = j;
       }
     }
