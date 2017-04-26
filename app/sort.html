@@ -29,13 +29,15 @@
       border-width: 1px;
     }
 
-    #myAnimation3 {
-      width: 50px;
-      height: 50px;
+    .myAnimation3 {
+      width: 25px;
+      height: 25px;
+      padding : 5px;
       position: relative;
       background: white;
       border-style: groove;
       border-width: 1px;
+      margin: 5px;
     }
   </style>
 </head>
@@ -45,8 +47,7 @@
   <div>
     Things will happen here :
     <p id="randomNpm"></p>
-    <p id="displayUnsortedArray">
-    </p>
+    <p id="displayUnsortedArray"></p>
   </div>
   <div>
     <textarea id="userInputArrayTextarea" rows="4" cols="50">
@@ -56,14 +57,14 @@
   </div>
 
   <script type="text/javascript" src="sort.js"></script>
-  <a href="../index.html">Go back -></a><br>
-  <button onclick="myMove1(myMove2)">Click Me</button>
+  <a href="../index.html">Go back -></a>
+  <button onclick="start">Click Me</button>
 
   <!-- <div id="myContainer">
     <div id="myAnimation">
     </div>
   </div> -->
-  <div id="myAnimation1">
+  <!-- <div id="myAnimation1">
     11
   </div>
   <br>
@@ -73,7 +74,9 @@
   <br>
   <div id="myAnimation3">
     22
-  </div>
+  </div> -->
+  <br>
+  <div id="displayArray"></div>
 </body>
 
 </html>

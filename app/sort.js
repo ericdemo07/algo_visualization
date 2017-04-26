@@ -35,21 +35,19 @@ function push() {
   if (arrayToSort.length > 0) {
     createArrayTable(arrayToSort);
     div.style.visibility = 'visible';
-    selectionSortImplementation(arrayToSort);
+    //  selectionSortImplementation(arrayToSort);
   }
-  console.log("Sorted Array : " + arrayToSort);
 }
 
 function createArrayTable(arrayToSort) {
-  var table = document.createElement("table");
+  var currentDiv = document.getElementById("displayArray");
   for (var i = 0; i < arrayToSort.length; i++) {
-    var row = table.insertRow(-1);
-    var firstNameCell = row.insertCell(-1);
-    firstNameCell.appendChild(document.createTextNode(arrayToSort[i]));
+    var newDiv = document.createElement("_" + arrayToSort[i]);
+    newDiv.setAttribute("class", "myAnimation3");
+    var newContent = document.createTextNode(arrayToSort[i]);
+    newDiv.appendChild(newContent);
+    document.body.insertBefore(newDiv, currentDiv);
   }
-  table.setAttribute("border", "1");
-  displayUnsortedArray.appendChild(document.createTextNode("Unsorted Array :"));
-  displayUnsortedArray.appendChild(table);
 }
 
 function selectionSortImplementation(arr) {
@@ -66,14 +64,25 @@ function selectionSortImplementation(arr) {
     arr[i] = temp1;
   }
 }
-//myMove1(myMove2);
+
+function start() {
+  selectionSortImplementation(arr);
+  console.log("Sorted Array : " + arrayToSort);
+}
+
+function flashElementGrey() {
+  document.getElementById("myAnimation1").style.background = "green";
+  // setTimeout(function() {
+  //   document.getElementById("myAnimation1").style.background = "white";
+  // }, 1000);
+}
 
 function myMove1(callback) {
   var elem = document.getElementById("myAnimation1");
   var pos = 0;
   var id = setInterval(function() {
     frame();
-  }, 10);
+  }, 5);
 
   function frame() {
     if (pos == 350) {
@@ -91,12 +100,12 @@ function myMove2(callback) {
   var pos = 0;
   var id = setInterval(function() {
     frame();
-  }, 10);
+  }, 5);
 
   function frame() {
     if (pos == 350) {
       clearInterval(id);
-      callback();
+      callback(flashElementGrey);
     } else {
       pos++;
       elem.style.left = pos + 'px';
@@ -104,16 +113,17 @@ function myMove2(callback) {
   }
 }
 
-function myMove3() {
+function myMove3(callback) {
   var elem = document.getElementById("myAnimation3");
   var pos = 0;
   var id = setInterval(function() {
     frame();
-  }, 10);
+  }, 5);
 
   function frame() {
     if (pos == 350) {
       clearInterval(id);
+      callback();
     } else {
       pos++;
       elem.style.left = pos + 'px';
