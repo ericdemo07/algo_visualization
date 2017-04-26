@@ -52,7 +52,6 @@ function createArrayTable(arrayToSort) {
   displayUnsortedArray.appendChild(table);
 }
 
-
 function selectionSortImplementation(arr) {
   var loc, j, temp1;
   for (i = 0; i < arr.length; i++) {
@@ -65,5 +64,59 @@ function selectionSortImplementation(arr) {
     temp1 = arr[loc];
     arr[loc] = arr[i];
     arr[i] = temp1;
+  }
+}
+//myMove1(myMove2);
+
+function myMove1(callback) {
+  var elem = document.getElementById("myAnimation1");
+  var pos = 0;
+  var id = setInterval(function() {
+    frame();
+  }, 10);
+
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+      callback(myMove3);
+    } else {
+      pos++;
+      elem.style.left = pos + 'px';
+    }
+  }
+}
+
+function myMove2(callback) {
+  var elem = document.getElementById("myAnimation2");
+  var pos = 0;
+  var id = setInterval(function() {
+    frame();
+  }, 10);
+
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+      callback();
+    } else {
+      pos++;
+      elem.style.left = pos + 'px';
+    }
+  }
+}
+
+function myMove3() {
+  var elem = document.getElementById("myAnimation3");
+  var pos = 0;
+  var id = setInterval(function() {
+    frame();
+  }, 10);
+
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++;
+      elem.style.left = pos + 'px';
+    }
   }
 }
